@@ -1,0 +1,299 @@
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author">
+    <title>马煜&宋燕楠</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft Yahei', sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #F79999;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: 100px 100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .numw {
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 1px solid red;
+            background-color: #ffffff;
+			float: left;
+			margin-right:10px;
+        }
+
+
+        .numw ul {
+            list-style: none;
+        }
+
+        .numw li {
+            width: 98px;
+            height: 98px;
+            font-size: 100px;
+            text-align: center;
+            line-height: 98px;
+            color: #62AB3F;
+        }
+
+        .btnw {
+            margin-top: 60px;
+        }
+
+        .btn {
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: red;
+            width: 120px;
+            height: 50px;
+            outline: none;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        .btnw .btn:nth-child(2) {
+            background-color: #CECECE;
+            color: #666;
+            border: 1px solid #e2e2e2;
+        }
+		#line{
+			height: 100px;
+			
+            display: inline-block;
+		}
+
+
+    </style>
+    <script src="./jquery.js"></script>
+
+
+</head>
+<body>
+<div class="container">
+    <div class="wrap">
+		<div id = 'line'>
+        <div class="numw">
+            <ul class="first">
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+        <div class="numw">
+            <ul class="second">
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+        <div class="numw">
+		
+		
+            <ul class="third">
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+		</div>
+	
+	</div>
+	
+	<div style="clear:both"></div>
+
+    <div class="btnw">
+        <button class="btn start">开始</button>
+        <button class="btn end">停止</button>
+    </div>
+	
+	<div id="in" style="height: 200px;margin-top:20px">
+		<b style="color:red;font-size:30px;">中奖号码</b>
+		
+	</div>
+
+    <div id="current" style="display:none">
+
+    </div>
+
+    <div id="currentIndex" style="display:none">
+
+    </div>
+
+	<div id='minus' style="display:none">
+	
+	</div>
+
+
+    <div id="had">
+
+    </div>
+</div>
+
+<script>
+    //注意重复抽到
+    var nums = ['001','002','003','005','006','008','009','010','011','012','013','015','016','018','019','020','021','022','023','025','026','028','029','030','031','032','033','035','036','038','039','050','051','052','053','055','056','058','059','060','061','062','063','065','066','068','069','080','081','082','083','085','086','088','089','090','091','092','093','095','096','098','099','100','101','102','103','105','106','108','109','110','111','112','113','115','116','118','119','120','121','122','123','125','126','128','129','130','131','132','133','135','136','138','139','150','151','152','153','155','156','158','159','160','161','162','163','165','166','168','169','180','181','182','183','185','186','188','189','190','191','192','193','195','196','198','199','200','201','202','203','205','206','208','209','210','211','212','213','215','216','218','219','220','221','222','223','225','226','228','229','230','231','232','233','235','236','238','239','250','251','252','253','255','256','258','259','260','261','262','263','265','266','268','269','280','281','282','283','285','286','288','289','290','291','292','293','295','296','298','299','300','301','302','303','305','306','308','309','310','311','312','313','315','316','318','319','320','321','322','323','325','326','328','329','330','331','332','333','335','336','338','339','350','351','352','353','355','356','358','359','360','361','362','363','365','366','368','369','380','381','382','383','385','386','388','389','390','391','392','393','395','396','398','399','500','501','502','503','505','506','508','509','510','511','512','513','515','516','518','519','520','521','522','523','525','526','528','529','530','531','532','533','535','536','538','539','550','551','552','553','555','556','558','559','560','561','562','563','565','566','568','569','580','581','582','583','585','586','588','589','590','591','592','593','595','596','598','599','600','601','602','603','605','606','608','609','610','611','612','613','615','616','618','619','620','621','622','623','625','626','628','629','630','631','632','633','635','636','638'];
+
+    function getNum(){
+        var a = parseInt(nums.length * Math.random());
+        var result = nums[a];
+
+        $('#current').html(result);
+        $('#currentIndex').html(a);
+
+        quickShow();
+    }
+
+    function quickShow(){
+        var num = $('#current').html();
+
+console.log(num);
+
+        var first = ''+Math.abs(parseInt(num.substring(0, 1)) + 5);
+        var second = ''+Math.abs(parseInt(num.substring(1, 2)) + 5);
+        var third = ''+Math.abs(parseInt(num.substring(2, 3)) + 5);
+
+		var first = first.substr(first.length-1,1);
+		var second = second.substr(second.length-1,1);
+		var third = third.substr(third.length-1,1);
+		
+		
+		$('#minus').html(first+''+second+''+third);
+        var firstTop = first*(-98);
+        $('.first').css('margin-top', firstTop+'px');
+
+        var secondTop = second*(-98);
+        $('.second').css('margin-top', secondTop+'px');
+
+        var thirdtTop = third*(-98);
+        $('.third').css('margin-top', thirdtTop+'px');
+    }
+
+    function showNum(num){
+        var first = num.substring(0, 1);
+        var second = num.substring(1, 2);
+        var third = num.substring(2, 3);
+
+        var firstTop = first*(-98);
+        $('.first').animate({
+            'margin-top': firstTop+'px',
+        }, 300);
+
+
+        if(second < 5){
+            secondtime = 2000;
+        }else if(second < 7){
+            secondtime = 3000;
+        }else{
+            secondtime = 4000;
+        }
+        var secondTop = second*(-98);
+        $('.second').animate({
+            'margin-top': secondTop+'px',
+        }, secondtime);
+
+
+
+
+        if(third < 5){
+            thirdtime = 3500;
+        }else if(third < 7){
+            thirdtime = 4500;
+        }else{
+            thirdtime = 5500;
+        }
+
+        var thirdtTop = third*(-98);
+        $('.third').animate({
+            'margin-top': thirdtTop+'px',
+        }, thirdtime, function (){
+            $('#in').append("<div style='color:red;font-size:50px'>"+num+"</div>");
+        });
+    }
+	
+    $('.start').click(function (){
+        if($(this).hasClass('ing')){
+            return false;
+        }
+		
+        xx = setInterval('getNum()', 60);
+        $(this).addClass('ing');
+
+    });
+
+    function tobeLong(currNum, currIndex){
+        var num = $('#minus').html();
+        var first = num.substring(0, 1);
+        var second = num.substring(1, 2);
+        var third = num.substring(2, 3);
+
+        var firstTop = first*(-98);
+        $('.first').css('margin-top', firstTop+'px');
+
+        var secondTop = second*(-98);
+        $('.second').css('margin-top', secondTop+'px');
+
+        var thirdtTop = third*(-98);
+        $('.third').css('margin-top', thirdtTop+'px');
+    }
+
+    Array.prototype.remove = function(el) {
+        return this.splice(this.indexOf(el), 1);
+    }
+
+    $('.end').click(function (){
+        clearInterval(xx);
+        $('.start').removeClass('ing');
+
+        var currNum = $('#current').html();
+        var currIndex = $('#currentIndex').html();
+
+        //to be long
+        tobeLong(currNum, currIndex);
+
+        nums.remove($('#current').html());
+        showNum(currNum);
+    });
+
+</script>
+
+</body>
+</html>
